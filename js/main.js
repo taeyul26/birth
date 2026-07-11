@@ -117,6 +117,32 @@ if (lightbox && lightboxItems.length > 0) {
     if (e.key === 'ArrowLeft') showPrevPhoto();
     if (e.key === 'ArrowRight') showNextPhoto();
   });
+
+  // 스와이프로 넘기기
+  let touchStartX = null;
+  let touchStartY = null;
+
+  lightbox.addEventListener('touchstart', (e) => {
+    const t = e.changedTouches[0];
+    touchStartX = t.clientX;
+    touchStartY = t.clientY;
+  }, { passive: true });
+
+  lightbox.addEventListener('touchend', (e) => {
+    if (touchStartX === null) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStartX;
+    const dy = t.clientY - touchStartY;
+    touchStartX = null;
+    touchStartY = null;
+
+    if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
+    if (dx < 0) {
+      showNextPhoto();
+    } else {
+      showPrevPhoto();
+    }
+  }, { passive: true });
 }
 
 // 대형 사진 책장 넘김 자동 전환 (테마 6)

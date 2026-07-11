@@ -1018,6 +1018,7 @@ html[data-theme="theme-7"] .share-btn:active {
   display: flex;
   align-items: center;
   justify-content: center;
+  touch-action: none;
 }
 
 .lightbox[hidden] {

@@ -37,24 +37,60 @@ if ('IntersectionObserver' in window) {
   fadeTargets.forEach((el) => el.classList.add('is-visible'));
 }
 
-// 링크 복사
-const copyBtn = document.getElementById('copyLinkBtn');
+// 카카오톡 공유하기
+const kakaoShareBtn = document.getElementById('kakaoShareBtn');
 const toast = document.getElementById('copyToast');
 
-if (copyBtn) {
-  copyBtn.addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(window.location.href);
-    } catch (err) {
-      const temp = document.createElement('input');
-      document.body.appendChild(temp);
-      temp.value = window.location.href;
-      temp.select();
-      document.execCommand('copy');
-      document.body.removeChild(temp);
+async function copyLinkFallback() {
+  try {
+    await navigator.clipboard.writeText(window.location.href);
+  } catch (err) {
+    const temp = document.createElement('input');
+    document.body.appendChild(temp);
+    temp.value = window.location.href;
+    temp.select();
+    document.execCommand('copy');
+    document.body.removeChild(temp);
+  }
+  toast.textContent = '카카오톡 공유가 안 돼서 링크를 복사했어요';
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2200);
+}
+
+if (kakaoShareBtn) {
+  kakaoShareBtn.addEventListener('click', () => {
+    if (!window.Kakao) {
+      copyLinkFallback();
+      return;
     }
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 1800);
+    if (!Kakao.isInitialized()) {
+      Kakao.init('4106a0380955fcdabeb1ce286505c735');
+    }
+    try {
+      Kakao.Share.sendDefault({
+        objectType: 'feed',
+        content: {
+          title: '김태율의 첫돌 초대장',
+          description: '2026년 7월 26일 (일) 오전 11:30 · 쎄쎄쎄 송도점',
+          imageUrl: new URL('images/001.jpg', window.location.href).href,
+          link: {
+            mobileWebUrl: window.location.href,
+            webUrl: window.location.href,
+          },
+        },
+        buttons: [
+          {
+            title: '초대장 보기',
+            link: {
+              mobileWebUrl: window.location.href,
+              webUrl: window.location.href,
+            },
+          },
+        ],
+      });
+    } catch (err) {
+      copyLinkFallback();
+    }
   });
 }
 
@@ -82,10 +118,12 @@ function openLightbox(index) {
   lightboxIndex = index;
   updateLightbox();
   lightbox.hidden = false;
+  document.body.style.overflow = 'hidden';
 }
 
 function closeLightbox() {
   lightbox.hidden = true;
+  document.body.style.overflow = '';
 }
 
 function showPrevPhoto() {
@@ -127,6 +165,11 @@ if (lightbox && lightboxItems.length > 0) {
     touchStartX = t.clientX;
     touchStartY = t.clientY;
   }, { passive: true });
+
+  lightbox.addEventListener('touchmove', (e) => {
+    if (touchStartX === null) return;
+    e.preventDefault();
+  }, { passive: false });
 
   lightbox.addEventListener('touchend', (e) => {
     if (touchStartX === null) return;

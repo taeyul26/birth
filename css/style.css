@@ -603,7 +603,10 @@ html[data-theme="theme-7"] .cover-photo::after {
 }
 
 .map-link-icon {
-  font-size: 18px;
+  width: 28px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .transport {
@@ -710,16 +713,14 @@ html[data-theme="theme-5"] .gallery-item {
 
 .gallery-marquee-track {
   display: flex;
-  gap: 10px;
   width: max-content;
-  animation: galleryMarquee 21s linear infinite;
+  animation: galleryMarquee 34s linear infinite;
   will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
 }
 
 .marquee-item {
   flex: 0 0 96px;
+  margin-right: 10px;
   aspect-ratio: 1 / 1;
   border-radius: 16px;
   background: linear-gradient(135deg, var(--gradient-a), var(--gradient-b));
@@ -729,9 +730,12 @@ html[data-theme="theme-5"] .gallery-item {
   overflow: hidden;
 }
 
+/* 마퀴에는 낱개 사진 8장이 2벌(16개) 들어있음: 8 * (96px + 10px 여백) = 848px 만큼만
+   이동하면 이음매 없이 정확히 한 바퀴가 돈다. %기반 이동은 gap 계산 오차로
+   모바일에서 미세하게 어긋나 속도가 튀거나 끝에서 공백이 생기는 원인이었음. */
 @keyframes galleryMarquee {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to { transform: translateX(-848px); }
 }
 
 /* 테마 7: 달빛 동화 갤러리 프레임 */

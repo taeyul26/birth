@@ -713,6 +713,9 @@ html[data-theme="theme-5"] .gallery-item {
   gap: 10px;
   width: max-content;
   animation: galleryMarquee 21s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .marquee-item {

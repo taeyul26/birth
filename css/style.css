@@ -1,0 +1,1060 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Gothic:wght@400;700;800&family=Gaegu:wght@400;700&family=Song+Myung&family=Hi+Melody&family=Jua&family=Do+Hyeon&family=Gamja+Flower&display=swap');
+
+:root {
+  --color-bg: #fff9f5;
+  --color-outer: #e9e3df;
+  --color-card: #ffffff;
+  --color-primary: #f4a6a0;
+  --color-primary-dark: #e08a83;
+  --color-text: #4a3f3d;
+  --color-text-soft: #8a7b78;
+  --color-border: #f1e4df;
+  --gradient-a: #ffd9d3;
+  --gradient-b: #ffe8c9;
+  --shadow-rgb: 224, 138, 131;
+  --font-title: 'Gowun Batang', serif;
+  --font-body: 'Nanum Gothic', sans-serif;
+  --photo-radius: 50%;
+  --photo-border: 4px solid #fff;
+  --max-width: 480px;
+}
+
+/* 테마 2: 민트 내추럴 (숲과 나무) */
+html[data-theme="theme-2"] {
+  --color-bg: #f7faf3;
+  --color-outer: #e3ecd9;
+  --color-primary: #8fc9a9;
+  --color-primary-dark: #5b9271;
+  --color-text: #354a3a;
+  --color-text-soft: #728a76;
+  --color-border: #e0ecd8;
+  --gradient-a: #d7f0dd;
+  --gradient-b: #c9dfae;
+  --shadow-rgb: 91, 146, 113;
+  --font-title: 'Gaegu', cursive;
+  --photo-radius: 42% 58% 39% 61% / 47% 41% 59% 53%;
+  --photo-border: 4px solid #fff;
+}
+
+/* 테마 3: 베이지 우드 */
+html[data-theme="theme-3"] {
+  --color-bg: #fbf6ee;
+  --color-outer: #ece2d2;
+  --color-primary: #c9a27a;
+  --color-primary-dark: #a67c52;
+  --color-text: #4a3c2f;
+  --color-text-soft: #8a7a68;
+  --color-border: #ece0d1;
+  --gradient-a: #f0ddc0;
+  --gradient-b: #e8c9a0;
+  --shadow-rgb: 166, 124, 82;
+  --font-title: 'Song Myung', serif;
+  --photo-radius: 8px;
+  --photo-border: 8px double #fff;
+}
+
+/* 테마 4: 라벤더 드리미 (여름 라벤더 들판) */
+html[data-theme="theme-4"] {
+  --color-bg: #fdf6f0;
+  --color-outer: #ece0f0;
+  --color-primary: #b6a3d9;
+  --color-primary-dark: #8f76c2;
+  --color-text: #453f57;
+  --color-text-soft: #8981a0;
+  --color-border: #ece2ec;
+  --gradient-a: #e6ddf7;
+  --gradient-b: #f7e3c4;
+  --shadow-rgb: 143, 118, 194;
+  --font-title: 'Hi Melody', cursive;
+  --photo-radius: 50%;
+  --photo-border: 4px dotted #fce8b8;
+}
+
+/* 테마 5: 옐로우 비타민 */
+html[data-theme="theme-5"] {
+  --color-bg: #fffaf0;
+  --color-outer: #f5e9cf;
+  --color-primary: #f5b942;
+  --color-primary-dark: #e0912a;
+  --color-text: #4a3d24;
+  --color-text-soft: #9c8a63;
+  --color-border: #f7e6c4;
+  --gradient-a: #ffe9b0;
+  --gradient-b: #ffd08a;
+  --shadow-rgb: 224, 145, 42;
+  --font-title: 'Jua', sans-serif;
+  --photo-radius: 63% 37% 54% 46% / 55% 45% 55% 45%;
+  --photo-border: 4px solid #fff;
+}
+
+/* 테마 6: 스파클 파티 (애니메이션) */
+html[data-theme="theme-6"] {
+  --color-bg: #fff8fb;
+  --color-outer: #ffe9f2;
+  --color-primary: #ff6f9c;
+  --color-primary-dark: #e8487a;
+  --color-text: #43324a;
+  --color-text-soft: #8a7a91;
+  --color-border: #f6e2ea;
+  --gradient-a: #ffd6e8;
+  --gradient-b: #ffe9b8;
+  --shadow-rgb: 232, 72, 122;
+  --font-title: 'Do Hyeon', sans-serif;
+  --photo-radius: 50%;
+  --photo-border: 4px solid #fff;
+}
+
+/* 테마 7: 달빛 동화 */
+html[data-theme="theme-7"] {
+  --color-bg: #fbf8ff;
+  --color-outer: #e8e6f7;
+  --color-primary: #a78bfa;
+  --color-primary-dark: #7c6bcf;
+  --color-text: #4a4368;
+  --color-text-soft: #8b84a8;
+  --color-border: #ece8f8;
+  --gradient-a: #dcd6f7;
+  --gradient-b: #fce8c7;
+  --shadow-rgb: 124, 107, 207;
+  --font-title: 'Gamja Flower', cursive;
+  --photo-radius: 50%;
+  --photo-border: 6px solid #fff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-outer);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background 0.3s ease;
+}
+
+body > * {
+  width: 100%;
+  max-width: var(--max-width);
+}
+
+.section {
+  background: var(--color-bg);
+  padding: 56px 28px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.section-title {
+  font-family: var(--font-title);
+  font-size: 22px;
+  margin-bottom: 24px;
+  color: var(--color-primary-dark);
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 2px;
+  margin: 10px auto 0;
+  background: var(--color-primary);
+  opacity: 0.6;
+  border-radius: 2px;
+}
+
+/* 테마별 구분선 장식 */
+html[data-theme="theme-1"] .section-title::after {
+  content: '♥ · ♥';
+  width: auto;
+  height: auto;
+  background: none;
+  font-size: 13px;
+  opacity: 1;
+  color: var(--color-primary);
+}
+
+html[data-theme="theme-2"] .section-title::after {
+  content: '🌿 · 🌲 · 🌿';
+  width: auto;
+  height: auto;
+  background: none;
+  font-size: 13px;
+  opacity: 1;
+  color: var(--color-primary);
+}
+
+html[data-theme="theme-3"] .section-title::after {
+  width: 60px;
+  height: 5px;
+  background: none;
+  border-top: 1px solid var(--color-primary);
+  border-bottom: 1px solid var(--color-primary);
+  opacity: 0.8;
+}
+
+html[data-theme="theme-4"] .section-title::after {
+  content: '☀ 🦋 ☀';
+  width: auto;
+  height: auto;
+  background: none;
+  font-size: 13px;
+  opacity: 1;
+  color: var(--color-primary);
+}
+
+html[data-theme="theme-5"] .section-title::after {
+  content: '● ● ●';
+  width: auto;
+  height: auto;
+  background: none;
+  font-size: 8px;
+  letter-spacing: 4px;
+  opacity: 1;
+  color: var(--color-primary);
+}
+
+html[data-theme="theme-6"] .section-title::after {
+  content: '✧ ⋆ ✧';
+  width: auto;
+  height: auto;
+  background: none;
+  font-size: 13px;
+  letter-spacing: 2px;
+  opacity: 1;
+  color: var(--color-primary);
+}
+
+html[data-theme="theme-7"] .section-title::after {
+  content: '☾ ⋆ ☾';
+  width: auto;
+  height: auto;
+  background: none;
+  font-size: 13px;
+  letter-spacing: 3px;
+  opacity: 1;
+  color: var(--color-primary);
+}
+
+/* 스크롤 페이드인 */
+.fade-in {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 커버 */
+.cover {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover > *:not(.floaty-layer) {
+  position: relative;
+  z-index: 1;
+}
+
+.cover-photo {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 28px;
+  border-radius: var(--photo-radius);
+  background: linear-gradient(135deg, var(--gradient-a), var(--gradient-b));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: var(--photo-border);
+  box-shadow: 0 8px 24px rgba(var(--shadow-rgb), 0.25);
+  transition: border-radius 0.3s ease;
+}
+
+/* 떠다니는 배경 요소 (테마 6 전용) */
+.floaty-layer {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+html[data-theme="theme-6"] .floaty-layer,
+html[data-theme="theme-4"] .floaty-layer,
+html[data-theme="theme-2"] .floaty-layer,
+html[data-theme="theme-1"] .floaty-layer {
+  display: block;
+}
+
+.floaty {
+  position: absolute;
+  font-size: 22px;
+  opacity: 0;
+  animation: floatUp 9s ease-in-out infinite;
+}
+
+.floaty::before {
+  content: '';
+}
+
+/* 테마 1: 로맨틱 파스텔 */
+html[data-theme="theme-1"] .floaty.f1::before { content: '💕'; }
+html[data-theme="theme-1"] .floaty.f2::before { content: '♥'; }
+html[data-theme="theme-1"] .floaty.f3::before { content: '💗'; }
+html[data-theme="theme-1"] .floaty.f4::before { content: '♥'; }
+html[data-theme="theme-1"] .floaty.f5::before { content: '💕'; }
+html[data-theme="theme-1"] .floaty.f6::before { content: '💗'; }
+
+/* 테마 6: 스파클 파티 */
+html[data-theme="theme-6"] .floaty.f1::before { content: '✦'; }
+html[data-theme="theme-6"] .floaty.f2::before { content: '🎈'; }
+html[data-theme="theme-6"] .floaty.f3::before { content: '⭐'; }
+html[data-theme="theme-6"] .floaty.f4::before { content: '🎈'; }
+html[data-theme="theme-6"] .floaty.f5::before { content: '✦'; }
+html[data-theme="theme-6"] .floaty.f6::before { content: '⭐'; }
+
+/* 테마 4: 여름 라벤더 들판 */
+html[data-theme="theme-4"] .floaty.f1::before { content: '☀️'; }
+html[data-theme="theme-4"] .floaty.f2::before { content: '🦋'; }
+html[data-theme="theme-4"] .floaty.f3::before { content: '🌸'; }
+html[data-theme="theme-4"] .floaty.f4::before { content: '🦋'; }
+html[data-theme="theme-4"] .floaty.f5::before { content: '☀️'; }
+html[data-theme="theme-4"] .floaty.f6::before { content: '🌿'; }
+
+/* 테마 2: 숲과 나무 */
+html[data-theme="theme-2"] .floaty.f1::before { content: '🍃'; }
+html[data-theme="theme-2"] .floaty.f2::before { content: '🌲'; }
+html[data-theme="theme-2"] .floaty.f3::before { content: '🌿'; }
+html[data-theme="theme-2"] .floaty.f4::before { content: '🌲'; }
+html[data-theme="theme-2"] .floaty.f5::before { content: '🍃'; }
+html[data-theme="theme-2"] .floaty.f6::before { content: '🦋'; }
+
+.floaty.f1 { left: 10%; top: 85%; animation-duration: 9s; animation-delay: 0s; }
+.floaty.f2 { left: 78%; top: 80%; animation-duration: 11s; animation-delay: 1.5s; }
+.floaty.f3 { left: 25%; top: 70%; animation-duration: 7.5s; animation-delay: 0.5s; }
+.floaty.f4 { left: 60%; top: 90%; animation-duration: 10s; animation-delay: 2s; }
+.floaty.f5 { left: 42%; top: 78%; animation-duration: 8.5s; animation-delay: 1s; }
+.floaty.f6 { left: 90%; top: 65%; animation-duration: 9.5s; animation-delay: 2.5s; }
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  15% { opacity: 0.85; }
+  50% { transform: translateY(-90px) rotate(10deg); }
+  85% { opacity: 0.6; }
+  100% { transform: translateY(-180px) rotate(-8deg); opacity: 0; }
+}
+
+/* 커버 사진 반짝임 (테마 6 전용) */
+html[data-theme="theme-6"] .cover-photo::before,
+html[data-theme="theme-6"] .cover-photo::after {
+  content: '✦';
+  position: absolute;
+  font-size: 20px;
+  color: var(--color-primary-dark);
+  animation: twinkle 1.8s ease-in-out infinite;
+}
+
+html[data-theme="theme-6"] .cover-photo::before {
+  top: -8px;
+  right: 6px;
+  animation-delay: 0s;
+}
+
+html[data-theme="theme-6"] .cover-photo::after {
+  bottom: 6px;
+  left: -14px;
+  font-size: 16px;
+  animation-delay: 0.7s;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.25); }
+}
+
+/* 여름 라벤더 들판 사진 장식 (테마 4) */
+html[data-theme="theme-4"] .cover-photo::before,
+html[data-theme="theme-4"] .cover-photo::after {
+  position: absolute;
+  font-size: 20px;
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+html[data-theme="theme-4"] .cover-photo::before {
+  content: '☀️';
+  top: -10px;
+  right: 8px;
+  animation-delay: 0s;
+}
+
+html[data-theme="theme-4"] .cover-photo::after {
+  content: '🦋';
+  bottom: 4px;
+  left: -14px;
+  font-size: 18px;
+  animation-delay: 0.8s;
+}
+
+/* 숲과 나무 사진 장식 (테마 2) */
+html[data-theme="theme-2"] .cover-photo::before,
+html[data-theme="theme-2"] .cover-photo::after {
+  position: absolute;
+  font-size: 20px;
+  animation: twinkle 2.4s ease-in-out infinite;
+}
+
+html[data-theme="theme-2"] .cover-photo::before {
+  content: '🍃';
+  top: -8px;
+  right: 6px;
+  animation-delay: 0s;
+}
+
+html[data-theme="theme-2"] .cover-photo::after {
+  content: '🌲';
+  bottom: 2px;
+  left: -14px;
+  font-size: 18px;
+  animation-delay: 1s;
+}
+
+/* 로맨틱 파스텔 사진 장식 (테마 1) */
+html[data-theme="theme-1"] .cover-photo::before,
+html[data-theme="theme-1"] .cover-photo::after {
+  position: absolute;
+  font-size: 20px;
+  color: var(--color-primary-dark);
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+html[data-theme="theme-1"] .cover-photo::before {
+  content: '♥';
+  top: -8px;
+  right: 8px;
+  animation-delay: 0s;
+}
+
+html[data-theme="theme-1"] .cover-photo::after {
+  content: '💕';
+  bottom: 4px;
+  left: -14px;
+  font-size: 18px;
+  animation-delay: 0.9s;
+}
+
+/* 달빛 동화 사진 프레임 (테마 7 전용) */
+html[data-theme="theme-7"] .cover-photo {
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.6), 0 10px 30px rgba(var(--shadow-rgb), 0.35);
+}
+
+html[data-theme="theme-7"] .cover-photo::before,
+html[data-theme="theme-7"] .cover-photo::after {
+  content: '⋆';
+  position: absolute;
+  font-size: 22px;
+  color: #f4c95d;
+  animation: twinkle 2.2s ease-in-out infinite;
+}
+
+html[data-theme="theme-7"] .cover-photo::before {
+  top: -10px;
+  left: 14px;
+  animation-delay: 0s;
+}
+
+html[data-theme="theme-7"] .cover-photo::after {
+  content: '☾';
+  bottom: 2px;
+  right: -12px;
+  font-size: 26px;
+  color: var(--color-primary);
+  animation-delay: 0.9s;
+}
+
+.cover-eyebrow {
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: var(--color-text-soft);
+  margin-bottom: 8px;
+}
+
+.cover-name {
+  font-family: var(--font-title);
+  font-size: 40px;
+  color: var(--color-primary-dark);
+  margin-bottom: 12px;
+}
+
+.cover-sub {
+  font-size: 15px;
+  color: var(--color-text-soft);
+  margin-bottom: 20px;
+}
+
+.dday-badge {
+  display: inline-block;
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #fff;
+  background: var(--color-primary-dark);
+  border-radius: 999px;
+}
+
+/* 인사말 */
+.greeting-text {
+  font-size: 15.5px;
+  line-height: 1.9;
+  color: var(--color-text);
+  margin-bottom: 24px;
+}
+
+.greeting-parents {
+  font-size: 14px;
+  color: var(--color-text-soft);
+}
+
+/* 정보 카드 */
+.info-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: left;
+  box-shadow: 0 6px 20px rgba(var(--shadow-rgb), 0.08);
+}
+
+.info-row {
+  display: flex;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--color-border);
+  font-size: 14.5px;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  flex: 0 0 60px;
+  color: var(--color-primary-dark);
+  font-weight: 800;
+}
+
+.info-value {
+  flex: 1;
+}
+
+/* 오시는 길 */
+.address {
+  font-size: 14.5px;
+  color: var(--color-text-soft);
+  margin-bottom: 20px;
+}
+
+.map-box {
+  width: 100%;
+  height: 220px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--color-border);
+  margin-bottom: 16px;
+}
+
+.map-links {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.map-link-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 4px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: #fff;
+  color: var(--color-primary-dark);
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  text-align: center;
+}
+
+.map-link-btn:active {
+  background: var(--color-border);
+}
+
+.map-link-icon {
+  font-size: 18px;
+}
+
+.transport {
+  text-align: left;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.transport-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  padding: 8px 0;
+}
+
+.transport-icon {
+  font-size: 18px;
+}
+
+/* 갤러리 */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.gallery-item {
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, var(--gradient-a), var(--gradient-b));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gallery-item:active {
+  transform: scale(0.97);
+}
+
+
+/* 테마별 갤러리 프레임 */
+html[data-theme="theme-2"] .gallery-item { border-radius: 18px; }
+
+html[data-theme="theme-3"] .gallery-item {
+  border-radius: 2px;
+  border: 6px solid #fff;
+  box-shadow: 0 2px 8px rgba(var(--shadow-rgb), 0.15);
+}
+
+html[data-theme="theme-4"] .gallery-item { border-radius: 20px; }
+
+html[data-theme="theme-5"] .gallery-item {
+  border-radius: 16px;
+  border: 2px solid var(--color-primary);
+}
+
+/* 큰 대표 사진 (책장 넘기듯 자동 전환) */
+.gallery-featured {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  perspective: 900px;
+}
+
+.featured-page {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--gradient-a), var(--gradient-b));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 10px 26px rgba(var(--shadow-rgb), 0.25);
+  transform-origin: left center;
+  backface-visibility: hidden;
+  opacity: 0;
+  transform: rotateY(-130deg);
+  z-index: 1;
+  transition: opacity 1.6s cubic-bezier(0.45, 0, 0.2, 1), transform 1.6s cubic-bezier(0.45, 0, 0.2, 1);
+}
+
+.featured-page.is-active {
+  opacity: 1;
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+/* 슬라이딩 사진 스트립 (낱개 그리드는 아래 그대로 유지) */
+.gallery-marquee {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.gallery-marquee-track {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  animation: galleryMarquee 21s linear infinite;
+}
+
+.marquee-item {
+  flex: 0 0 96px;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--gradient-a), var(--gradient-b));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+@keyframes galleryMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* 테마 7: 달빛 동화 갤러리 프레임 */
+html[data-theme="theme-7"] .gallery-item {
+  border-radius: 20px;
+  box-shadow: 0 6px 16px rgba(var(--shadow-rgb), 0.2);
+}
+
+/* 플레이스홀더 라벨 */
+.placeholder-label {
+  font-size: 12px;
+  color: #a68f88;
+  text-align: center;
+  padding: 0 8px;
+}
+
+/* 실제 사진 채우기 */
+.cover-photo img,
+.gallery-item img,
+.featured-page img,
+.marquee-item img,
+.lightbox-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 공유 */
+.share {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.share-btn {
+  width: 100%;
+  padding: 16px;
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff;
+  background: var(--color-primary);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.share-btn:active {
+  background: var(--color-primary-dark);
+}
+
+.copy-toast {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--color-text-soft);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.copy-toast.show {
+  opacity: 1;
+}
+
+/* 푸터 */
+.footer {
+  background: #f3ece7;
+  padding: 24px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--color-text-soft);
+}
+
+/* 테마 1: 로맨틱 파스텔 배경 무늬 (하트를 불규칙하게 스탬프) */
+html[data-theme="theme-1"] .section {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cg fill='%23e08a83'%3E%3Cpath opacity='0.13' transform='translate(24,36) rotate(-12) scale(0.8)' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3Cpath opacity='0.09' transform='translate(160,14) rotate(18) scale(0.5)' d='M12 20c-4-3-8-6.5-8-11a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 4.5-4 8-8 11z'/%3E%3Cpath opacity='0.15' transform='translate(244,60) rotate(-8) scale(1)' d='M12 21s-6.7-4.35-9.3-8.1C.6 9.8 1.7 6 5 6c2 0 3.3 1.2 4 2.4C9.7 7.2 11 6 13 6c3.3 0 4.4 3.8 2.3 6.9C18.7 16.65 12 21 12 21z'/%3E%3Cpath opacity='0.08' transform='translate(100,100) rotate(6) scale(0.45)' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3Cpath opacity='0.12' transform='translate(60,150) rotate(22) scale(0.6)' d='M12 20c-4-3-8-6.5-8-11a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 4.5-4 8-8 11z'/%3E%3Cpath opacity='0.16' transform='translate(200,160) rotate(-18) scale(0.85)' d='M12 21s-6.7-4.35-9.3-8.1C.6 9.8 1.7 6 5 6c2 0 3.3 1.2 4 2.4C9.7 7.2 11 6 13 6c3.3 0 4.4 3.8 2.3 6.9C18.7 16.65 12 21 12 21z'/%3E%3Cpath opacity='0.1' transform='translate(270,220) rotate(12) scale(0.55)' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3Cpath opacity='0.14' transform='translate(30,240) rotate(14) scale(0.9)' d='M12 20c-4-3-8-6.5-8-11a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 4.5-4 8-8 11z'/%3E%3Cpath opacity='0.09' transform='translate(150,265) rotate(-24) scale(0.6)' d='M12 21s-6.7-4.35-9.3-8.1C.6 9.8 1.7 6 5 6c2 0 3.3 1.2 4 2.4C9.7 7.2 11 6 13 6c3.3 0 4.4 3.8 2.3 6.9C18.7 16.65 12 21 12 21z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 300px 300px;
+  background-color: var(--color-bg);
+}
+
+/* 테마 5: 옐로우 비타민 배경 무늬 (기포/알갱이 느낌) */
+html[data-theme="theme-5"] .section {
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.55) 2px, transparent 2px),
+    radial-gradient(circle, rgba(224, 145, 42, 0.16) 3px, transparent 3px);
+  background-size: 22px 22px, 38px 38px;
+  background-position: 0 0, 12px 12px;
+  background-color: var(--color-bg);
+}
+
+/* 테마 4: 여름 라벤더 들판 배경 무늬 (햇살 느낌) */
+html[data-theme="theme-4"] .section {
+  background-image: radial-gradient(circle, rgba(255, 210, 110, 0.3) 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+  background-color: var(--color-bg);
+}
+
+/* 테마 2: 숲과 나무 배경 무늬 (나뭇잎/이끼 느낌) */
+html[data-theme="theme-2"] .section {
+  background-image: radial-gradient(circle, rgba(91, 146, 113, 0.14) 1.5px, transparent 1.5px);
+  background-size: 18px 18px;
+  background-color: var(--color-bg);
+}
+
+/* ===== 테마 7: 달빛 동화 상세 ===== */
+html[data-theme="theme-7"] .section {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.6) 1px, transparent 1px);
+  background-size: 18px 18px;
+  background-color: var(--color-bg);
+}
+
+html[data-theme="theme-7"] .greeting-text {
+  position: relative;
+  display: inline-block;
+  background: #fff;
+  border: 2px dashed var(--color-primary);
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: 0 8px 24px rgba(var(--shadow-rgb), 0.18);
+  text-align: left;
+}
+
+html[data-theme="theme-7"] .greeting-text::before {
+  content: '✨';
+  position: absolute;
+  top: -14px;
+  left: 22px;
+  font-size: 18px;
+  background: var(--color-bg);
+  padding: 0 6px;
+}
+
+html[data-theme="theme-7"] .info-card,
+html[data-theme="theme-7"] .transport {
+  border: 2px dashed var(--color-primary);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(var(--shadow-rgb), 0.15);
+}
+
+html[data-theme="theme-7"] .map-box {
+  border: 2px dashed var(--color-primary);
+}
+
+html[data-theme="theme-7"] .share-btn {
+  border-radius: 20px;
+  transition: transform 0.15s ease;
+}
+
+html[data-theme="theme-7"] .share-btn:active {
+  transform: scale(0.97);
+}
+
+/* ===== 테마 스위처 (좌상단 고정 UI) ===== */
+.theme-switcher {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  width: auto;
+  max-width: none;
+  z-index: 999;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+.theme-toggle-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  font-size: 19px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-panel {
+  margin-top: 8px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  width: 188px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.theme-panel[hidden] {
+  display: none;
+}
+
+.theme-panel-title {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #8a7b78;
+  margin-bottom: 4px;
+  padding: 0 6px;
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 6px;
+  border: none;
+  background: none;
+  border-radius: 8px;
+  font-size: 12.5px;
+  color: #4a3f3d;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.theme-option:hover {
+  background: #f5f0ee;
+}
+
+.theme-option.is-active {
+  background: #efe6e3;
+  font-weight: 800;
+}
+
+.theme-swatch {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  flex: 0 0 15px;
+}
+
+.theme-swatch.s1 { background: linear-gradient(135deg, #ffd9d3, #f4a6a0); }
+.theme-swatch.s2 { background: linear-gradient(135deg, #d7f0dd, #5fa37e); }
+.theme-swatch.s3 { background: linear-gradient(135deg, #f0ddc0, #a67c52); }
+.theme-swatch.s4 { background: linear-gradient(135deg, #e6ddf7, #8f76c2); }
+.theme-swatch.s5 { background: linear-gradient(135deg, #ffe9b0, #e0912a); }
+.theme-swatch.s6 { background: linear-gradient(135deg, #ffd6e8, #e8487a); }
+.theme-swatch.s7 { background: linear-gradient(135deg, #fce8c7, #a78bfa); }
+
+.theme-random-btn {
+  margin-top: 6px;
+  padding: 8px 6px;
+  border-radius: 8px;
+  border: 1px dashed #ccbcb6;
+  background: none;
+  font-size: 12px;
+  color: #4a3f3d;
+  cursor: pointer;
+}
+
+.theme-random-btn:hover {
+  background: #f5f0ee;
+}
+
+/* ===== 사진 라이트박스 ===== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  width: auto;
+  max-width: none;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox-content {
+  width: min(86vw, 420px);
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--gradient-a), var(--gradient-b));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-prev {
+  left: 14px;
+}
+
+.lightbox-next {
+  right: 14px;
+}
+
+.lightbox-close:hover,
+.lightbox-arrow:hover {
+  background: rgba(255, 255, 255, 0.28);
+}

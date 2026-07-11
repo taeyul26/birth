@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>김태율의 첫돌 초대장</title>
+<meta name="description" content="김태율의 첫돌잔치에 소중한 분들을 초대합니다.">
+<script>
+  (function () {
+    var themes = ['theme-1', 'theme-2', 'theme-3', 'theme-4', 'theme-5', 'theme-6', 'theme-7'];
+    var STORAGE_KEY = 'doljanchi-theme';
+    var saved = null;
+    try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+    var picked = (saved && themes.indexOf(saved) !== -1) ? saved : themes[Math.floor(Math.random() * themes.length)];
+    document.documentElement.setAttribute('data-theme', picked);
+  })();
+</script>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=4106a0380955fcdabeb1ce286505c735&autoload=false"></script>
+</head>
+<body>
+
+  <!-- 테마 선택 -->
+  <div class="theme-switcher" id="themeSwitcher">
+    <button type="button" id="themeToggleBtn" class="theme-toggle-btn" aria-label="테마 선택 열기">🎨</button>
+    <div id="themePanel" class="theme-panel" hidden>
+      <p class="theme-panel-title">테마 선택</p>
+      <button type="button" class="theme-option" data-theme-id="theme-1"><span class="theme-swatch s1"></span>로맨틱 파스텔</button>
+      <button type="button" class="theme-option" data-theme-id="theme-2"><span class="theme-swatch s2"></span>민트 내추럴</button>
+      <button type="button" class="theme-option" data-theme-id="theme-3"><span class="theme-swatch s3"></span>베이지 우드</button>
+      <button type="button" class="theme-option" data-theme-id="theme-4"><span class="theme-swatch s4"></span>라벤더 드리미</button>
+      <button type="button" class="theme-option" data-theme-id="theme-5"><span class="theme-swatch s5"></span>옐로우 비타민</button>
+      <button type="button" class="theme-option" data-theme-id="theme-6"><span class="theme-swatch s6"></span>스파클 파티</button>
+      <button type="button" class="theme-option" data-theme-id="theme-7"><span class="theme-swatch s7"></span>달빛 동화</button>
+      <button type="button" id="randomModeBtn" class="theme-random-btn">🎲 랜덤 모드로 전환</button>
+    </div>
+  </div>
+
+  <!-- 커버 -->
+  <section class="section cover fade-in">
+    <div class="floaty-layer" aria-hidden="true">
+      <span class="floaty f1"></span>
+      <span class="floaty f2"></span>
+      <span class="floaty f3"></span>
+      <span class="floaty f4"></span>
+      <span class="floaty f5"></span>
+      <span class="floaty f6"></span>
+    </div>
+    <div class="cover-photo">
+      <img src="images/001.jpg" alt="김태율 아기 사진">
+    </div>
+    <p class="cover-eyebrow">첫 번째 생일에 초대합니다</p>
+    <h1 class="cover-name">김태율</h1>
+    <p class="cover-sub">2026. 07. 26. (일) 오전 11:30</p>
+    <div id="dday" class="dday-badge">D-DAY 계산 중</div>
+  </section>
+
+  <!-- 인사말 -->
+  <section class="section greeting fade-in">
+    <h2 class="section-title">초대합니다</h2>
+    <p class="greeting-text">
+      세상에 태어나 건강하게 첫돌을 맞이한 우리 아이의<br>
+      소중한 순간을 함께 축하해 주시면 감사하겠습니다.<br>
+      귀한 걸음 하시어 자리를 빛내주세요.
+    </p>
+    <p class="greeting-parents">김규석 · 변정현 의 아들, <strong>김태율</strong></p>
+  </section>
+
+  <!-- 갤러리 -->
+  <section class="section gallery fade-in">
+    <h2 class="section-title">태율이의 첫 1년</h2>
+    <div class="gallery-featured" aria-hidden="true">
+      <div class="featured-page"><img src="images/002.jpg" alt=""></div>
+      <div class="featured-page"><img src="images/003.jpg" alt=""></div>
+      <div class="featured-page"><img src="images/004.jpg" alt=""></div>
+      <div class="featured-page"><img src="images/005.jpg" alt=""></div>
+      <div class="featured-page"><img src="images/006.jpg" alt=""></div>
+      <div class="featured-page"><img src="images/007.jpg" alt=""></div>
+      <div class="featured-page"><img src="images/008.jpg" alt=""></div>
+      <div class="featured-page"><img src="images/009.jpg" alt=""></div>
+    </div>
+    <div class="gallery-marquee" aria-hidden="true">
+      <div class="gallery-marquee-track">
+        <div class="marquee-item"><img src="images/002.jpg" alt=""></div>
+        <div class="marquee-item"><img src="images/003.jpg" alt=""></div>
+        <div class="marquee-item"><img src="images/004.jpg" alt=""></div>
+        <div class="marquee-item"><img src="images/005.jpg" alt=""></div>
+        <div class="marquee-item"><img src="images/006.jpg" alt=""></div>
+        <div class="marquee-item"><img src="images/007.jpg" alt=""></div>
+        <div class="marquee-item"><img src="images/008.jpg" alt=""></div>
+        <div class="marquee-item"><img src="images/009.jpg" alt=""></div>
+        <div class="marquee-item"><img src="images/002.jpg" alt=""></div>
+        <div class="marquee-item"><img src="images/003.jpg" alt=""></div>
+        <div class="marquee-item"><img src="images/004.jpg" alt=""></div>
+        <div class="marquee-item"><img src="images/005.jpg" alt=""></div>
+        <div class="marquee-item"><img src="images/006.jpg" alt=""></div>
+        <div class="marquee-item"><img src="images/007.jpg" alt=""></div>
+        <div class="marquee-item"><img src="images/008.jpg" alt=""></div>
+        <div class="marquee-item"><img src="images/009.jpg" alt=""></div>
+      </div>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="images/002.jpg" alt="김태율 사진 1"></div>
+      <div class="gallery-item"><img src="images/003.jpg" alt="김태율 사진 2"></div>
+      <div class="gallery-item"><img src="images/004.jpg" alt="김태율 사진 3"></div>
+      <div class="gallery-item"><img src="images/005.jpg" alt="김태율 사진 4"></div>
+      <div class="gallery-item"><img src="images/006.jpg" alt="김태율 사진 5"></div>
+      <div class="gallery-item"><img src="images/007.jpg" alt="김태율 사진 6"></div>
+    </div>
+  </section>
+
+  <!-- 일시 및 장소 -->
+  <section class="section info fade-in">
+    <h2 class="section-title">일시 및 장소</h2>
+    <div class="info-card">
+      <div class="info-row">
+        <span class="info-label">일시</span>
+        <span class="info-value">2026년 7월 26일 (일) 오전 11:30</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">장소</span>
+        <span class="info-value">인천광역시 연수구 컨벤시아대로 165<br>포스코타워 송도 33층 쎄쎄쎄 송도점 G홀</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 오시는 길 -->
+  <section class="section directions fade-in">
+    <h2 class="section-title">오시는 길</h2>
+    <p class="address">인천광역시 연수구 컨벤시아대로 165<br>포스코타워 송도 33층 쎄쎄쎄 송도점 G홀</p>
+
+    <div id="map" class="map-box"></div>
+
+    <div class="map-links">
+      <a class="map-link-btn" href="kakaonavi://navigate?name=%EC%8E%84%EC%8E%84%EC%8E%84%20%EC%86%A1%EB%8F%84%EC%A0%90&x=126.6444397&y=37.3891411&coord_type=wgs84" target="_blank" rel="noopener">
+        <span class="map-link-icon">🧭</span>카카오내비 길안내
+      </a>
+      <a class="map-link-btn" href="tmap://route?goalname=%EC%8E%84%EC%8E%84%EC%8E%84%20%EC%86%A1%EB%8F%84%EC%A0%90&goalx=126.6444397&goaly=37.3891411" target="_blank" rel="noopener">
+        <span class="map-link-icon">🚗</span>티맵 길안내
+      </a>
+      <a class="map-link-btn" href="https://map.naver.com/p/search/%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C%20%EC%97%B0%EC%88%98%EA%B5%AC%20%EC%BB%A8%EB%B2%A4%EC%8B%9C%EC%95%84%EB%8C%80%EB%A1%9C%20165" target="_blank" rel="noopener">
+        <span class="map-link-icon">🗺️</span>네이버지도 보기
+      </a>
+    </div>
+
+    <div class="transport">
+      <div class="transport-row">
+        <span class="transport-icon">🚇</span>
+        <span>인천1호선 인천대입구역 하차<br>(서울역 방면 1호선 → 부평역 환승 → 인천대입구역)</span>
+      </div>
+      <div class="transport-row">
+        <span class="transport-icon">🚌</span>
+        <span>광명역(KTX) 3002번 버스<br>강남역 7번 출구 M6405 광역버스</span>
+      </div>
+      <div class="transport-row">
+        <span class="transport-icon">🚗</span>
+        <span>지하 B1·B2 주차장 (1,500대 규모)<br>방문 고객 3시간 무료</span>
+      </div>
+      <div class="transport-row">
+        <span class="transport-icon">📞</span>
+        <span>032-427-3331</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 공유 -->
+  <section class="section share fade-in">
+    <button id="copyLinkBtn" class="share-btn">초대장 링크 복사하기</button>
+    <p id="copyToast" class="copy-toast">링크가 복사되었어요</p>
+  </section>
+
+  <footer class="footer">
+    <p>김태율의 첫돌 초대장</p>
+  </footer>
+
+  <!-- 사진 라이트박스 -->
+  <div id="lightbox" class="lightbox" hidden>
+    <button type="button" id="lightboxClose" class="lightbox-close" aria-label="닫기">✕</button>
+    <button type="button" id="lightboxPrev" class="lightbox-arrow lightbox-prev" aria-label="이전 사진">‹</button>
+    <div class="lightbox-content">
+      <img id="lightboxImage" src="" alt="">
+    </div>
+    <button type="button" id="lightboxNext" class="lightbox-arrow lightbox-next" aria-label="다음 사진">›</button>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -96,9 +96,20 @@ if (kakaoShareBtn) {
 
 // 갤러리 사진 라이트박스 (좌우 화살표로 넘기기)
 // 라이트박스는 전체 사진(큰 이미지·마퀴와 동일한 세트)을 탐색하고,
-// 그리드는 그중 앞 6장만 클릭 진입점으로 사용
+// 그리드는 그중 일부만 클릭 진입점으로 사용 (그리드 순서가 전체 목록과
+// 다를 수 있어 인덱스가 아니라 이미지 src로 정확히 매칭한다)
 const lightboxItems = [...document.querySelectorAll('.gallery-featured .featured-page')];
 const gridClickItems = [...document.querySelectorAll('.gallery-grid .gallery-item')];
+
+function findPoolIndexForGridItem(gridItem) {
+  const gridImg = gridItem.querySelector('img');
+  const gridSrc = gridImg ? gridImg.getAttribute('src') : null;
+  const idx = lightboxItems.findIndex((page) => {
+    const img = page.querySelector('img');
+    return img && img.getAttribute('src') === gridSrc;
+  });
+  return idx === -1 ? 0 : idx;
+}
 const lightbox = document.getElementById('lightbox');
 const lightboxImage = document.getElementById('lightboxImage');
 const lightboxClose = document.getElementById('lightboxClose');
@@ -137,8 +148,8 @@ function showNextPhoto() {
 }
 
 if (lightbox && lightboxItems.length > 0) {
-  gridClickItems.forEach((item, index) => {
-    item.addEventListener('click', () => openLightbox(index));
+  gridClickItems.forEach((item) => {
+    item.addEventListener('click', () => openLightbox(findPoolIndexForGridItem(item)));
   });
 
   lightboxClose.addEventListener('click', closeLightbox);
